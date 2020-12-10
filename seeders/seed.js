@@ -2,7 +2,7 @@ let mongoose = require("mongoose");
 let db = require("../models");
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://MongoAdmin:iZogasgSs4ckcm82@basecluster.6zsug.mongodb.net/test?w=majority", { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true  });
 
 let workoutSeed = [
   {
