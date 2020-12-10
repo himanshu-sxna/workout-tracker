@@ -4,7 +4,12 @@ const mongoose = require("mongoose");
 
 const router = express.Router();
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://MongoAdmin:iZogasgSs4ckcm82@basecluster.6zsug.mongodb.net/test?w=majority", { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://MongoAdmin:iZogasgSs4ckcm82@basecluster.6zsug.mongodb.net/test?w=majority", 
+{   useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  });
 
 //get workouts form mongoDB
 router.get("/api/workouts", function(req, res){
