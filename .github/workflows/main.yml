@@ -13,5 +13,5 @@ jobs:
     - uses: akhileshns/heroku-deploy@v3.4.6
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "hidden-garden-41688"
+          heroku_app_name: "thawing-hollows-58627"
           heroku_email: "${{secrets.USER_EMAIL}}"
