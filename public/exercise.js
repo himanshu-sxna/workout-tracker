@@ -17,13 +17,11 @@ const newWorkout = document.querySelector(".new-workout")
 let workoutType = null;
 let shouldNavigateAway = false;
 
+let workoutData = {};
+
 async function initExercise() {
   let workout;
-
-  if (location.search.split("=")[1] === undefined) {
-    workout = await API.createWorkout()
-    console.log(workout)
-  }
+  
   if (workout) {
     location.search = "?id=" + workout._id;
   }
@@ -98,7 +96,7 @@ function validateInputs() {
 async function handleFormSubmit(event) {
   event.preventDefault();
 
-  let workoutData = {};
+  
 
   if (workoutType === "cardio") {
     workoutData.type = "cardio";
@@ -113,10 +111,18 @@ async function handleFormSubmit(event) {
     workoutData.reps = Number(repsInput.value.trim());
     workoutData.duration = Number(resistanceDurationInput.value.trim());
   }
-
-  await API.addExercise(workoutData);
-  clearInputs();
-  toast.classList.add("success");
+  
+  if (location.search.split("=")[1] === undefined) {
+    workout = await API.createWorkout(workoutData)
+    console.log(workout)
+    clearInputs();
+    toast.classList.add("success");
+  } else {
+    workout = await API.addExercise(workoutData);
+    clearInputs();
+    toast.classList.add("success");
+  }
+  
 }
 
 function handleToastAnimationEnd() {
