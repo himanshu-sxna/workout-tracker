@@ -1,8 +1,9 @@
 let mongoose = require("mongoose");
 let db = require("../models");
+require('dotenv').config()
 
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGODB_ATLAS, { w: "majority", useNewUrlParser: true, useUnifiedTopology: true  });
 
 let workoutSeed = [
   {
